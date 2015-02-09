@@ -1,4 +1,6 @@
 package dev.code;
+
+import java.math.BigInteger;
  
 public class Tester {
 
@@ -26,6 +28,13 @@ public class Tester {
 
 		fib = mu.fib(40);
 		fib = mu.recursiveFib(40);
-		System.out.println("Recursive Fib is: " + fib);
+		System.out.println("Recursive Fib is: " + fib); 
+		
+		BigInteger m =  BigInteger.valueOf(3);
+		BigInteger n =  BigInteger.valueOf(4);
+		
+		BigInteger ack = mu.ack(m, n);
+		System.out.println("Ackerman value of " + m + " " + n + " is: " + ack);
+		
 	}
 }
