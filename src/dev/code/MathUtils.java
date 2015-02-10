@@ -1,4 +1,3 @@
-
 package dev.code;
 
 import java.io.NotActiveException;
@@ -8,16 +7,21 @@ import java.text.BreakIterator;
 /**
  * 
  * @author md
- *
+ * 
  */
 public class MathUtils {
 
 	/**
 	 * Get distance between two x/y coordinates
-	 * @param x2 Value for X2
-	 * @param x1 Value for X1
-	 * @param y2 Value for Y2
-	 * @param y1 Value for Y1
+	 * 
+	 * @param x2
+	 *            Value for X2
+	 * @param x1
+	 *            Value for X1
+	 * @param y2
+	 *            Value for Y2
+	 * @param y1
+	 *            Value for Y1
 	 * @return Retuns distance
 	 */
 	public static double getDistance(double x2, double x1, double y2, double y1) {
@@ -30,7 +34,9 @@ public class MathUtils {
 
 	/**
 	 * Based on double passed in, will generate factorial
-	 * @param n Double for number to be factored via factorial
+	 * 
+	 * @param n
+	 *            Double for number to be factored via factorial
 	 * @return Factorial result
 	 */
 	public static double factorial(double n) {
@@ -45,10 +51,38 @@ public class MathUtils {
 		return result;
 	}
 
+	/**
+	 * Factorial using iterative for loop
+	 * 
+	 * @param n
+	 *            Integer for factorial
+	 * @return Returns factorial
+	 */
+	public static double myexp(double n) {
+		double factorial = 0;
+		double x = 0;
+
+		// factorial = n;
+		for (double i = 1; i <= n; i++) {
+			x = (i + 1);
+			if (i == 1) {
+				factorial = 1;
+			} else {
+				factorial = factorial * (i);
+				System.out.println("Factorial on loop i: " + i + " is: "
+						+ factorial + " i-1 " + (x));
+			}
+		}
+
+		return factorial;
+	}
+
 	// calculate Fibonacci sequence
 	/**
 	 * Fibonacci algorithm via for loop
-	 * @param n integer to run through Fibonacci algorithm
+	 * 
+	 * @param n
+	 *            integer to run through Fibonacci algorithm
 	 * @return returns Fibonacci
 	 */
 	public static int fib(int n) {
@@ -75,8 +109,10 @@ public class MathUtils {
 	}
 
 	/**
-	 * Recursive Fibonacci 
-	 * @param n Integer
+	 * Recursive Fibonacci
+	 * 
+	 * @param n
+	 *            Integer
 	 * @return Returns Fibonacci #
 	 */
 	public static int recursiveFib(int n) {
@@ -112,8 +148,11 @@ public class MathUtils {
 	 * positive integers, a and b. The process is based on the observation that,
 	 * if r is the remainder when a is divided by b, then the common divisors of
 	 * a and b are the same as the common divisors of b and r.
-	 * @param a Integer a
-	 * @param b Integer b
+	 * 
+	 * @param a
+	 *            Integer a
+	 * @param b
+	 *            Integer b
 	 * @return Returns greatest common denominator
 	 */
 	public static Integer gcd(int a, int b) {
@@ -128,5 +167,61 @@ public class MathUtils {
 			modr = b;
 		}
 		return modr;
+	}
+
+	/**
+	 * Collatz conjecture Take any natural number n. If n is even, divide it by
+	 * 2 to get n / 2. If n is odd, multiply it by 3 and add 1 to obtain 3n + 1.
+	 * Repeat the process (which has been called "Half Or Triple Plus One", or
+	 * HOTPO[6]) indefinitely. The conjecture is that no matter what number you
+	 * start with, you will always eventually reach 1. The property has also
+	 * been called oneness
+	 */
+
+	public static Integer collatz(int n, boolean display) {
+		int i = 0;
+
+		while (n != 1) {
+			if (n % 2 == 0) {
+				n = n / 2;
+			} else {
+				n = (n * 3) + 1;
+			}
+			if (display) {
+				System.out.println("n is: " + n + " for iteration: " + i);
+			}
+			i++;
+		}
+		return n;
+	}
+
+	/**
+	 * checkIfPrime will check to see if an integer is prime or not.Prime
+	 * numbers are positive, non-zero numbers that have exactly two factors --
+	 * no more, no less.
+	 * 
+	 * @param n
+	 *            Integer to check to see if prime
+	 * @return Returns boolean true if prime, false if not.
+	 * 
+	 */
+	public static boolean checkIfPrime(int n) {
+		boolean prime = false;
+		int result = 0;
+
+		if (n == 2) {
+			prime = true;
+		} else {
+			for (int i = 2; i < n; i++) {
+				result = n % i;
+				if (result == 0) {
+					prime = false;
+					return prime;
+				} else {
+					prime = true;
+				}
+			}
+		}
+		return prime;
 	}
 }
