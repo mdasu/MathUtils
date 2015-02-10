@@ -1,5 +1,6 @@
 package dev.code;
 
+import java.beans.beancontext.BeanContext;
 import java.math.BigInteger;
  
 public class Tester {
@@ -33,8 +34,16 @@ public class Tester {
 		BigInteger m =  BigInteger.valueOf(3);
 		BigInteger n =  BigInteger.valueOf(4);
 		
-		BigInteger ack = mu.ack(m, n);
-		System.out.println("Ackerman value of " + m + " " + n + " is: " + ack);
+		//BigInteger ack = mu.ack(m, n);
+		//System.out.println("Ackerman value of " + m + " " + n + " is: " + ack);
+	
+		//System.out.println(mu.gcd(36, 20));
 		
+		//int a = 210, b = 45;
+		int a = 1, b = 3;
+		a = 289833;
+		b = 33;
+		int gcd = mu.gcd(a,b);
+		System.out.println("Show GCD of " + a + " " + b + " is: " + gcd  );
 	}
 }

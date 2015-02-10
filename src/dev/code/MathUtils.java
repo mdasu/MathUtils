@@ -2,6 +2,7 @@ package dev.code;
 
 import java.io.NotActiveException;
 import java.math.BigInteger;
+import java.text.BreakIterator;
 
 /**
  * @author md
@@ -73,29 +74,35 @@ public class MathUtils {
 	public static BigInteger ack(BigInteger m, BigInteger n) {
 
 		BigInteger result = BigInteger.ONE;
-		
+
 		if (m.signum() == 0) {
-			result = n.add(BigInteger.ONE);  
-			return result ;
+			result = n.add(BigInteger.ONE);
+			return result;
 		}
 		if (m.signum() > 0 && n.signum() == 0) {
 			return ack(m.subtract(BigInteger.ONE), BigInteger.ONE);
 		}
-		
-		return ack(m.subtract(BigInteger.ONE),ack(m, n.subtract(BigInteger.ONE)));
-	
-//		if (m.signum() == 0)
-//	        return n.add(BigInteger.ONE);
-//	    else if (n.signum() == 0)
-//	        return naiveAckermann(m.subtract(BigInteger.ONE), BigInteger.ONE);
-//	    else
-//	        return naiveAckermann(m.subtract(BigInteger.ONE),
-//	                              naiveAckermann(m, n.subtract(BigInteger.ONE)));
-		
+		return ack(m.subtract(BigInteger.ONE),
+				ack(m, n.subtract(BigInteger.ONE)));
+	}
+
+	/*
+	 * Euclidean algorithm is a way to find the greatest common divisor of two
+	 * positive integers, a and b. The process is based on the observation that,
+	 * if r is the remainder when a is divided by b, then the common divisors of
+	 * a and b are the same as the common divisors of b and r.
+	 */
+	public static Integer gcd(int a, int b) {
+		int result = 0;
+		int r = 0, modr = 0;
+		r = a % b;
+
+		if (r > 0) {
+			modr = r;
+			modr = gcd(b, r);
+		} else {
+			modr = b;
+		}
+		return modr;
 	}
 }
-
-
-
-
-
