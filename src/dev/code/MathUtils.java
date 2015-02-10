@@ -1,3 +1,4 @@
+
 package dev.code;
 
 import java.io.NotActiveException;
@@ -5,11 +6,20 @@ import java.math.BigInteger;
 import java.text.BreakIterator;
 
 /**
- * @author md
  * 
+ * @author md
+ *
  */
 public class MathUtils {
 
+	/**
+	 * Get distance between two x/y coordinates
+	 * @param x2 Value for X2
+	 * @param x1 Value for X1
+	 * @param y2 Value for Y2
+	 * @param y1 Value for Y1
+	 * @return Retuns distance
+	 */
 	public static double getDistance(double x2, double x1, double y2, double y1) {
 		double distance = 0;
 
@@ -18,6 +28,11 @@ public class MathUtils {
 		return distance;
 	}
 
+	/**
+	 * Based on double passed in, will generate factorial
+	 * @param n Double for number to be factored via factorial
+	 * @return Factorial result
+	 */
 	public static double factorial(double n) {
 		double recursive = 0, result = 0;
 		System.out.println("Starting... " + n + " " + recursive);
@@ -26,14 +41,16 @@ public class MathUtils {
 		} else {
 			recursive = factorial(n - 1);
 			result = n * recursive;
-			// return n*factorial(n-1);
-			System.out.println("n " + n + " recursive " + recursive
-					+ " result " + result);
 		}
 		return result;
 	}
 
 	// calculate Fibonacci sequence
+	/**
+	 * Fibonacci algorithm via for loop
+	 * @param n integer to run through Fibonacci algorithm
+	 * @return returns Fibonacci
+	 */
 	public static int fib(int n) {
 		int fib = 0;
 		int i, start = 0;
@@ -57,12 +74,16 @@ public class MathUtils {
 		return fib;
 	}
 
+	/**
+	 * Recursive Fibonacci 
+	 * @param n Integer
+	 * @return Returns Fibonacci #
+	 */
 	public static int recursiveFib(int n) {
 		int fib = 0;
 		int i, start = 0;
 		int seed = 0;
 		int[] fibArray;
-		// fibArray = new int[n+1];
 		if (n <= 1) {
 			fib = n;
 		} else {
@@ -86,11 +107,14 @@ public class MathUtils {
 				ack(m, n.subtract(BigInteger.ONE)));
 	}
 
-	/*
+	/**
 	 * Euclidean algorithm is a way to find the greatest common divisor of two
 	 * positive integers, a and b. The process is based on the observation that,
 	 * if r is the remainder when a is divided by b, then the common divisors of
 	 * a and b are the same as the common divisors of b and r.
+	 * @param a Integer a
+	 * @param b Integer b
+	 * @return Returns greatest common denominator
 	 */
 	public static Integer gcd(int a, int b) {
 		int result = 0;
