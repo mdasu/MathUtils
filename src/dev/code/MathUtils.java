@@ -1,5 +1,8 @@
 package dev.code;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.NotActiveException;
 import java.math.BigInteger;
 import java.text.BreakIterator;
@@ -224,4 +227,58 @@ public class MathUtils {
 		}
 		return prime;
 	}
+
+	private static boolean isNumeric(String s) {
+		boolean isNumeric = false;
+		double doub = 0.0;
+		int chkInt;
+
+		try {
+			chkInt = Integer.valueOf(s);
+			isNumeric = true;
+
+		} catch (NumberFormatException e) {
+			isNumeric = false;
+			// e.printStackTrace();
+		}
+		return isNumeric;
+	}
+
+	public static int getInteger(String var) {
+		int returnInt = 0;
+		String inString;
+		boolean isNumeric = false;
+		boolean process = true;
+
+		while (process) {
+			try {
+				System.out.println("Enter value for " + var + " here: ");
+				BufferedReader bufferRead = new BufferedReader(
+						new InputStreamReader(System.in));
+				inString = bufferRead.readLine();
+
+				System.out.println(inString);
+
+				if (inString.contentEquals("x")) {
+					break;
+				}
+				isNumeric = isNumeric(inString);
+				if (isNumeric) {
+					returnInt = Integer.valueOf(inString);
+					System.out
+							.println("Value for " + var + " is: " + returnInt);
+					break;
+				} else {
+					System.out
+							.println("Please enter a numeric value or enter x to exit: ");
+				}
+
+			} catch (IOException e) {
+				System.out.println("IOException hit!");
+				// e.printStackTrace();
+			}
+		}
+		return returnInt;
+	}
+
 }
